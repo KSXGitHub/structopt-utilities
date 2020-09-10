@@ -10,6 +10,7 @@ mod shell;
 
 pub use shell::Shell;
 
+/// Arguments of a completion generator program.
 #[derive(Debug, StructOpt, Clone, Eq, PartialEq)]
 #[structopt(rename_all = "kebab")]
 pub struct Args {
