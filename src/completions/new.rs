@@ -1,6 +1,6 @@
 use super::{App, Shell};
 use pipe_trait::*;
-use std::{path::PathBuf, process::exit};
+use std::path::PathBuf;
 use structopt::clap::{self, Arg};
 
 impl App {
@@ -43,11 +43,7 @@ impl App {
             shell: matches
                 .value_of("shell")
                 .unwrap()
-                .pipe(Shell::parse_from_str)
-                .unwrap_or_else(|value| {
-                    eprintln!("ERROR: {} is not a valid shell", value);
-                    exit(2)
-                }),
+                .pipe(|value| unsafe { Shell::parse_from_str_unchecked(value) }),
         }
     }
 }

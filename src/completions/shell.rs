@@ -1,4 +1,4 @@
-use pipe_trait::*;
+use core::hint::unreachable_unchecked;
 use structopt::clap::{self, Shell::*};
 
 /// Shell wrapper type with additional traits.
@@ -7,17 +7,20 @@ pub struct Shell(pub clap::Shell);
 
 impl Shell {
     /// Convert a string to `Shell`
-    pub fn parse_from_str(text: &str) -> Result<Self, &str> {
-        match text {
+    ///
+    /// ### Safety
+    ///
+    /// It is safe when `text` is always one of `["bash", "fish", "zsh", "powershell", "elvish"]`.
+    /// Otherwise, it returns `unreachable_unchecked()`.
+    pub unsafe fn parse_from_str_unchecked(text: &str) -> Self {
+        Shell(match text {
             "bash" => Bash,
             "fish" => Fish,
             "zsh" => Zsh,
             "powershell" => PowerShell,
             "elvish" => Elvish,
-            _ => return Err(text),
-        }
-        .pipe(Shell)
-        .pipe(Ok)
+            _ => unreachable_unchecked(),
+        })
     }
 
     /// Extract `clap::Shell`.
