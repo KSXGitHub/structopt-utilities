@@ -1,0 +1,23 @@
+[package]
+name = "structopt-utilities"
+description = "Small utilities related to structopt and clap"
+version = "0.0.0"
+authors = ["khai96_ <hvksmr1996@gmail.com>"]
+edition = "2018"
+license = "MIT"
+keywords = ["structopt"]
+repository = "https://github.com/KSXGitHub/structopt-utilities.git"
+readme = "README.md"
+include = [
+  "/src",
+  "/Cargo.toml",
+  "/README.md",
+]
+
+[lib]
+name = "structopt_utilities"
+path = "src/lib.rs"
+
+[dependencies]
+structopt = "^0.3.17"
+pipe-trait = "^0.2.0"
