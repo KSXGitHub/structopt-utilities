@@ -155,6 +155,7 @@ version = "0.0.2"
 dependencies = [
  "pipe-trait",
  "structopt",
+ "structopt-derive",
 ]
 
 [[package]]
