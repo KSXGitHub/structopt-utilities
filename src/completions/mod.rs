@@ -17,7 +17,7 @@ pub use shell::Shell;
 #[structopt(rename_all = "kebab")]
 pub struct Args {
     /// Binary name
-    #[structopt(long, default_value = "pretty-exec")]
+    #[structopt(long)]
     pub bin: String,
 
     /// File to write to
