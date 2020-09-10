@@ -1,7 +1,6 @@
-mod completions;
-mod traits;
+pub mod completions;
 
-pub use completions::*;
+mod traits;
 pub use traits::*;
 
 pub use structopt::{self, clap, *};
