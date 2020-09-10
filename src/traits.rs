@@ -30,8 +30,8 @@ pub trait StructOptUtils: StructOpt + Sized {
     }
 
     /// Run completion generator program.
-    fn run_completion_generator() {
-        completions::Args::strict_from_args().exec::<Self>()
+    fn run_completion_generator(name: &str, bin: &str) {
+        completions::App::new(name, bin).exec::<Self>()
     }
 }
 
