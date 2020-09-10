@@ -1,10 +1,10 @@
 # StructOpt Utilities
 
-Small utilities related to structopt and clap.
+Small utilities related to [structopt](https://github.com/TeXitoi/structopt) and [clap](https://github.com/clap-rs/clap).
 
 ## Description
 
-This library contains commonly used functions related to `structopt` and `clap`.
+This library contains commonly used functions related to structopt and clap.
 
 ## License
 
