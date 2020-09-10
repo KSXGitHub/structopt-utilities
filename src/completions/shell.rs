@@ -1,4 +1,4 @@
-use std::hint::unreachable_unchecked;
+use pipe_trait::*;
 use structopt::clap::{self, Shell::*};
 
 /// Shell wrapper type with additional traits.
@@ -6,16 +6,18 @@ use structopt::clap::{self, Shell::*};
 pub struct Shell(pub clap::Shell);
 
 impl Shell {
-    /// This function is to be used by structopt parser only.
-    pub(crate) fn parse_from_str_unchecked(text: &str) -> Self {
-        Shell(match text {
+    /// Convert a string to `Shell`
+    pub fn parse_from_str(text: &str) -> Result<Self, &str> {
+        match text {
             "bash" => Bash,
             "fish" => Fish,
             "zsh" => Zsh,
             "powershell" => PowerShell,
             "elvish" => Elvish,
-            _ => unsafe { unreachable_unchecked() },
-        })
+            _ => return Err(text),
+        }
+        .pipe(Shell)
+        .pipe(Ok)
     }
 
     /// Extract `clap::Shell`.

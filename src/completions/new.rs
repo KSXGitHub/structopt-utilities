@@ -1,6 +1,6 @@
 use super::{App, Shell};
 use pipe_trait::*;
-use std::path::PathBuf;
+use std::{path::PathBuf, process::exit};
 use structopt::clap::{self, Arg};
 
 impl App {
@@ -38,12 +38,16 @@ impl App {
             .get_matches();
 
         App {
-            bin: matches.value_of("bin").unwrap().to_string(),
+            bin: matches.value_of("bin").unwrap_or(bin).to_string(),
             output: matches.value_of("output").map(PathBuf::from),
             shell: matches
                 .value_of("shell")
                 .unwrap()
-                .pipe(Shell::parse_from_str_unchecked),
+                .pipe(Shell::parse_from_str)
+                .unwrap_or_else(|value| {
+                    eprintln!("ERROR: {} is not a valid shell", value);
+                    exit(2)
+                }),
         }
     }
 }
