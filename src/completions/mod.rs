@@ -1,3 +1,5 @@
+//! Resources to create a completion generator program.
+
 use pipe_trait::*;
 use std::{
     fs::File,
