@@ -1,6 +1,6 @@
 # StructOpt Utilities
 
-Small utilities related to [structopt](https://github.com/TeXitoi/structopt) and [clap](https://github.com/clap-rs/clap).
+Small utilities related to [structopt](https://github.com/TeXitoi/structopt) and [clap](https://clap.rs/).
 
 ## Description
 
