@@ -36,14 +36,10 @@ impl Shell {
 
 impl PartialEq for Shell {
     fn eq(&self, other: &Self) -> bool {
-        match (self.0, other.0) {
-            (Bash, Bash)
-            | (Fish, Fish)
-            | (Zsh, Zsh)
-            | (PowerShell, PowerShell)
-            | (Elvish, Elvish) => true,
-            _ => false,
-        }
+        matches!(
+            (self.0, other.0),
+            (Bash, Bash) | (Fish, Fish) | (Zsh, Zsh) | (PowerShell, PowerShell) | (Elvish, Elvish)
+        )
     }
 }
 
