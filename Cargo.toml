@@ -19,5 +19,5 @@ name = "structopt_utilities"
 path = "src/lib.rs"
 
 [dependencies]
-structopt = "^0.3.20"
+structopt = "^0.3.21"
 pipe-trait = "^0.2.1"
