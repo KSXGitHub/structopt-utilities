@@ -20,4 +20,4 @@ path = "src/lib.rs"
 
 [dependencies]
 structopt = "^0.3.21"
-pipe-trait = "^0.3.1"
+pipe-trait = "^0.3.2"
